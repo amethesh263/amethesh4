@@ -1,1 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clothing Brand Homepage</title>
+  <meta name="viewport" content="width=800, initial-scale=1">
+  <style>
+    body {
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .container {
+      width: 95vw;
+      max-width: 1200px;
+      margin: 15px auto;
+      border: 2px solid #000;
+      padding: 15px;
+    }
+    header {
+      display: flex;
+      align-items: flex-start;
+    }
+    .logo {
+      width: 100px;
+      min-width: 100px;
+      text-align: center;
+      font-size: 14px;
+      border: 1px solid #000;
+      height: 85px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-right: 7px;
+      background: #fff;
+    }
 
+    .search-cart-nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .search-bar-cart {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      margin-top: 7px;
+    }
+
+    .search-bar {
+      flex: 1;
+      margin-right: 7px;
+      border: 2.5px solid #888;
+      font-size: 20px;
+      padding: 7px 16px;
+      border-radius: 9px;
+      color: #444;
+    }
+    .cart-btn {
+      background: #e3fff8;
+      border: 2px solid #00bebd;
+      border-radius: 6px;
+      padding: 2px 13px;
+      margin-right: 13px;
+      color: #00bebd;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .login-btn {
+      border: 1px solid #000;
+      border-radius: 3px;
+      padding: 7px;
+      background: #fff;
+      font-size: 13px;
+      color: #222;
+      text-align: center;
+      margin-bottom: 9px;
+      cursor: pointer;
+      min-width: 80px;
+    }
+    nav {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 0;
+      display: flex;
+      height: 50px;
+      overflow-x: auto;
+      border: 1px solid #000;
+      background: #fff;
+      font-size: 16px;
+    }
+
+    .nav-btn {
+      flex: 1;
+      min-width: 90px;
+      padding: 0 6px;
+      border-right: 1px solid #888;
+      border: none;
+      background: #fff;
+      color: #153a7c;
+      font-family: Verdana, Arial, sans-serif;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .nav-btn:last-child {
+      border-right: none;
+    }
+    .nav-btn.active {
+      background: yellow;
+      color: #222;
+      font-weight: bold;
+    }
+
+    /* Hamburger menu styles (mobile) */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+      margin-left: 5px;
+      margin-bottom: 0;
+    }
+    .bar {
+      display: block;
+      width: 28px;
+      height: 4px;
+      margin: 5px 0;
+      background-color: #222;
+      border-radius: 2px;
+      transition: 0.4s;
+    }
+    @media (max-width: 950px) {
+      .container {
+        width: 99vw;
+        padding: 4vw 2vw;
+        min-width: 320px;
+      }
+      nav {
+        font-size: 15px;
+      }
+      .search-bar {
+        font-size: 16px;
+      }
+    }
+    @media (max-width: 740px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: inline-block;
+      }
+      .mobile-menu {
+        display: block;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100vw;
+        background: #fff;
+        border: 1px solid #888;
+        z-index: 99;
+      }
+      .mobile-menu .nav-btn {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #ececec;
+        border-right: none;
+        margin: 0;
+        background: #fff;
+        color: #153a7c;
+      }
+      .mobile-menu .nav-btn:last-child {
+        border-bottom: none;
+      }
+      .search-cart-nav {
+        min-width: 130px;
+      }
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    .main-image {
+      width: 100%;
+      height: 200px;
+      border: 2px solid #000;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 15px;
+      background: #fff;
+    }
+    .info-row {
+      display: flex;
+      width: 100%;
+      gap: 11px;
+    }
+    .nav-info-box {
+      min-width: 240px;
+      width: 240px;
+      height: 120px;
+      border: 2px solid #000;
+      background: #fff;
+      padding: 5px 12px;
+      font-size: 16px;
+      color: #153a7c;
+      font-family: Verdana, Arial;
+      margin-bottom: 8px;
+    }
+    .lower-row {
+      display: flex;
+      width: 100%;
+      margin-top: 15px;
+      gap: 11px;
+    }
+    .img-box, .img-box2 {
+      flex: 1;
+      min-width: 210px;
+      height: 150px;
+      border: 2px solid #000;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      background: #fff;
+      position: relative;
+    }
+    .img-box2 {
+      min-width: 210px;
+    }
+    .brand-history {
+      flex: 2;
+      border: 2px solid #000;
+      background: #fff;
+      text-align: center;
+      font-family: Verdana, Arial;
+      font-size: 11px;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px;
+      min-width: 210px;
+    }
+    @media (max-width: 900px) {
+      .info-row, .lower-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      .nav-info-box {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      .img-box, .img-box2, .brand-history {
+        margin-bottom: 11px;
+        min-width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div>Company</div>
+        <div>logo</div>
+        <div>75x85</div>
+      </div>
+      <div class="search-cart-nav">
+        <div style="display:flex; align-items:center;">
+          <div class="hamburger" id="hamburgerMenu" aria-label="menu" tabindex="0">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <input class="search-bar" type="text" placeholder="Search ....." />
+          <button class="cart-btn">cart</button>
+        </div>
+        <nav id="mainNav">
+          <button class="nav-btn active">Homepage</button>
+          <button class="nav-btn">Men</button>
+          <button class="nav-btn">Women</button>
+          <button class="nav-btn">Kids</button>
+          <button class="nav-btn">Location</button>
+          <button class="nav-btn">About us</button>
+          <button class="nav-btn">Support</button>
+          <button class="nav-btn">Setting</button>
+        </nav>
+        <div class="login-btn">Login/<br>sign up</div>
+      </div>
+    </header>
+    <main>
+      <div class="info-row">
+        <div style="flex:2">
+          <div class="main-image">Image of best-selling clothing/or offers</div>
+        </div>
+        <div class="nav-info-box">
+          Navigation bar 800x50px<br>
+          Button background colour: white<br>
+          Font: Verdana<br>
+          Font size: 16<br>
+          Font colour: dark blue
+        </div>
+      </div>
+      <div class="lower-row">
+        <div class="img-box">Image of best-selling clothing</div>
+        <div class="brand-history">
+          Text about clothing brand and the origins(history)<br>
+          Font :Verdana<br>
+          Font size :11<br>
+          Font colour :black
+        </div>
+        <div class="img-box2">Image of clothing</div>
+      </div>
+    </main>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu" style="display:none;">
+      <button class="nav-btn active">Homepage</button>
+      <button class="nav-btn">Men</button>
+      <button class="nav-btn">Women</button>
+      <button class="nav-btn">Kids</button>
+      <button class="nav-btn">Location</button>
+      <button class="nav-btn">About us</button>
+      <button class="nav-btn">Support</button>
+      <button class="nav-btn">Setting</button>
+    </div>
+  </div>
+  <script>
+    // Hamburger menu JS
+    const hamburger = document.getElementById('hamburgerMenu');
+    const nav = document.getElementById('mainNav');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      if (mobileMenu.style.display === 'block') {
+        mobileMenu.style.display = 'none';
+      } else {
+        mobileMenu.style.display = 'block';
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.style.display = 'none';
+      }
+    });
+    // Optional: keyboard access for accessibility
+    hamburger.addEventListener('keydown', function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        hamburger.click();
+      }
+    });
+  </script>
+</body>
+</html>
